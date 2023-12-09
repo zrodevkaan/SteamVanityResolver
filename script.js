@@ -1,5 +1,3 @@
-const Config = require('./config')
-
 const submitBtn = document.getElementById('submit-btn');
 const vanityUrlInput = document.getElementById('vanity-url');
 const steamIdResult = document.getElementById('steam-id');
@@ -8,7 +6,7 @@ const steamIdResult2 = document.getElementById('steam-id2');
 const steamIdResult3 = document.getElementById('steam-id3');
 const userInfoResult = document.getElementById('user-info');
 
-const apiKey = Config.id;
+const apiKey = null;
 
 const fetchData = (url) => fetch(url).then(response => response.json());
 const displayResult = (element, content) => {
@@ -44,7 +42,7 @@ const findProfileStatus = (int) => {
 
 submitBtn.addEventListener('click', () => {
     const input = vanityUrlInput.value.trim();
-
+    apiKey = Object.entries(document.getElementsByClassName("apikey")).find(x=>x)[1].value // Do not question it.
     // Check if input is a Steam ID (numeric)
     if (!isNaN(input)) {
         fetchUserInfo(input)
