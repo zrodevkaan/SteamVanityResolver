@@ -42,22 +42,22 @@ const findProfileStatus = (int) => {
 
 submitBtn.addEventListener('click', () => {
     const input = vanityUrlInput.value.trim();
-    apiKey = Object.entries(document.getElementsByClassName("apikey")).find(x=>x)[1].value // Do not question it.
+    apiKey = Object.entries(document.getElementsByClassName("apikey")).find(x => x)[1].value // Do not question it.
     // Check if input is a Steam ID (numeric)
     if (!isNaN(input)) {
         fetchUserInfo(input)
             .then(data => {
                 if (data.response.players.length > 0) {
                     const user = data.response.players[0];
-                    displayResult(steamIdResult, `Steam ID: ${input}`);
-                    displayResult(steamIdResult1, `Username: ${user.personaname}`);
+                    displayResult(steamIdResult1, "Username: " + user.personaname + " || \nProfile Status: " + findProfileStatus(user.profilestate) + "");
+                    // displayResult(steamIdResult1, `Username: ${user.personaname}`);
                     steamIdResult2.innerHTML = `
                         <a href="${user.profileurl}" target="_blank">
                             <img src="${user.avatarfull}" alt="Avatar">
                         </a>`;
                     steamIdResult2.style.display = 'block';
-                    steamIdResult3.textContent = `Profile Status: ${findProfileStatus(user.profilestate)}`;
-                    steamIdResult3.style.display = 'block';
+                    //steamIdResult3.textContent = `Profile Status: ${findProfileStatus(user.profilestate)}`;
+                    //steamIdResult3.style.display = 'block';
                 } else {
                     displayError(userInfoResult, 'User information not found.');
                 }
@@ -77,14 +77,12 @@ submitBtn.addEventListener('click', () => {
                             const players = data.response.players;
                             if (players.length > 0) {
                                 const user = players[0];
-                                displayResult(steamIdResult1, `Username: ${user.personaname}`);
+                                displayResult(steamIdResult1, "Username: " + user.personaname + " || \nProfile Status: " + findProfileStatus(user.profilestate) + "");
                                 steamIdResult2.innerHTML = `
                                     <a href="${user.profileurl}" target="_blank">
                                         <img src="${user.avatarfull}" alt="Avatar">
                                     </a>`;
                                 steamIdResult2.style.display = 'block';
-                                steamIdResult3.textContent = `Profile Status: ${findProfileStatus(user.profilestate)}`;
-                                steamIdResult3.style.display = 'block';
                             } else {
                                 displayError(userInfoResult, 'User information not found.');
                             }
