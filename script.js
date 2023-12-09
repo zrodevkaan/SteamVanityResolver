@@ -6,7 +6,7 @@ const steamIdResult2 = document.getElementById('steam-id2');
 const steamIdResult3 = document.getElementById('steam-id3');
 const userInfoResult = document.getElementById('user-info');
 
-const apiKey = null;
+let apiKey = null;
 
 const fetchData = (url) => fetch(url).then(response => response.json());
 const displayResult = (element, content) => {
