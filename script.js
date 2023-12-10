@@ -49,7 +49,7 @@ submitBtn.addEventListener('click', () => {
             .then(data => {
                 if (data.response.players.length > 0) {
                     const user = data.response.players[0];
-                    const VanityURL = String(profileurl).split("/")[4] // haha copy-paste from firefox inline console
+                    const VanityURL = String(user.profileurl).split("/")[4] // haha copy-paste from firefox inline console
                     displayResult(steamIdResult, `Vanity URL: ${VanityURL}`);
                     displayResult(steamIdResult1, "Username: " + user.personaname + " || \nProfile Status: " + findProfileStatus(user.profilestate) + "");
                     steamIdResult2.innerHTML = `
