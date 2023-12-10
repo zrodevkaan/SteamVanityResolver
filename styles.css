@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
   }
   
@@ -63,7 +63,7 @@ body {
     padding: 10px;
     background-color: #333;
     color: #eee;
-    margin-bottom: 10px;
+    margin-bottom: -30px;
     display: none;
     border-radius: 5px;
   }
